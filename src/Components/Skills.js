@@ -3,15 +3,15 @@ import React from 'react';
 const Skills = () => {
   const skills = [
     { name: 'HTML', percentage: 70 },
-    { name: 'CSS', percentage: 85 },
-    { name: 'JavaScript', percentage: 80 },
+    { name: 'CSS', percentage: 65 },
+    { name: 'JavaScript', percentage: 60 },
     { name: 'Laravel', percentage: 75 },
     { name: 'React JS', percentage: 70 },
   ];
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-indigo-600 mb-4">My Skills</h1>
+      <h1 className="text-3xl font-bold text-indigo-600 mb-4 text-center"> Skills</h1>
 
       <div className="grid grid-cols-1 gap-6"> 
         {skills.map((skill) => (
