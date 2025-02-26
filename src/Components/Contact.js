@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
+  const formRef = useRef();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    from_name: '',
+    from_email: '',
     subject: '',
     message: ''
   });
+  const [status, setStatus] = useState({
+    submitted: false,
+    success: false,
+    message: ''
+  });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -18,8 +26,46 @@ const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your form submission logic here
-    console.log('Form submitted:', formData);
+    setLoading(true);
+    
+    // Replace YOUR_PUBLIC_KEY with your actual EmailJS public key
+    emailjs
+      .sendForm(
+        'service_pfyt2mk', 
+        'template_kbb2e3e', 
+        formRef.current, 
+        {
+          publicKey: '4SsV5x7xDWBvwTBTb',
+        }
+      )
+      .then(
+        (result) => {
+          console.log('SUCCESS!', result.text);
+          setStatus({
+            submitted: true,
+            success: true,
+            message: 'Your message has been sent successfully!'
+          });
+          // Reset form
+          setFormData({
+            from_name: '',
+            from_email: '',
+            subject: '',
+            message: ''
+          });
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+          setStatus({
+            submitted: true,
+            success: false,
+            message: `Failed to send message: ${error.text || 'Unknown error'}`
+          });
+        }
+      )
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -50,8 +96,9 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-medium text-gray-800">Email</h4>
-                    <a href="mailto:your.email@example.com" className="text-gray-600 hover:text-indigo-600">
-                      isurushehan450@gmail.com           </a>
+                    <a href="mailto:isurushehan450@gmail.com" className="text-gray-600 hover:text-indigo-600">
+                      isurushehan450@gmail.com
+                    </a>
                   </div>
                 </div>
 
@@ -61,7 +108,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-medium text-gray-800">Phone</h4>
-                    <a href="tel:+1234567890" className="text-gray-600 hover:text-indigo-600">
+                    <a href="tel:+94773045073" className="text-gray-600 hover:text-indigo-600">
                       +94 773045073
                     </a>
                   </div>
@@ -84,16 +131,22 @@ const ContactSection = () => {
 
           {/* Contact Form */}
           <div className="bg-white p-8 rounded-xl shadow-lg">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            {status.submitted && (
+              <div className={`mb-6 p-4 rounded-lg ${status.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                {status.message}
+              </div>
+            )}
+            
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="from_name" className="block text-sm font-medium text-gray-700 mb-1">
                   Full Name
                 </label>
                 <input
                   type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
+                  id="from_name"
+                  name="from_name"
+                  value={formData.from_name}
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
@@ -102,14 +155,14 @@ const ContactSection = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="from_email" className="block text-sm font-medium text-gray-700 mb-1">
                   Email Address
                 </label>
                 <input
                   type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
+                  id="from_email"
+                  name="from_email"
+                  value={formData.from_email}
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
@@ -151,10 +204,17 @@ const ContactSection = () => {
 
               <button
                 type="submit"
-                className="w-full py-3 px-6 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-300 flex items-center justify-center space-x-2"
+                disabled={loading}
+                className={`w-full py-3 px-6 ${loading ? 'bg-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700'} text-white rounded-lg transition-colors duration-300 flex items-center justify-center space-x-2`}
               >
-                <Send size={20} />
-                <span>Send Message</span>
+                {loading ? (
+                  <span>Sending...</span>
+                ) : (
+                  <>
+                    <Send size={20} />
+                    <span>Send Message</span>
+                  </>
+                )}
               </button>
             </form>
           </div>

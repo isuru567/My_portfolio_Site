@@ -10,7 +10,7 @@ const HeroSection = () => {
           {/* Text Content */}
           <div className="flex-1 text-center lg:text-left space-y-6">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-              Hi, I'm <span className="text-indigo-600">Isuru Shehan</span> 👋
+              Hi, I'm <span className="text-indigo-600">Isuru Shehan</span> 
             </h2>
             
             <h3 className="text-2xl md:text-3xl font-semibold text-gray-700">
@@ -38,7 +38,7 @@ const HeroSection = () => {
               </a>
             </div>
 
-            {/* Social Links */}
+            
             <div className="flex gap-6 justify-center lg:justify-start pt-6">
               <a 
                 href="https://github.com/isuru567" 
@@ -56,16 +56,11 @@ const HeroSection = () => {
               >
                 <Linkedin size={24} />
               </a>
-              <a 
-                href="mailto:your.email@example.com" 
-                className="text-gray-600 hover:text-indigo-600 transition-colors duration-300"
-              >
-                <Mail size={24} />
-              </a>
+              
             </div>
           </div>
 
-          {/* Image/Avatar Section */}
+          
           <div className="flex-1 flex justify-center lg:justify-end">
             <div className="relative">
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
@@ -75,7 +70,7 @@ const HeroSection = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              {/* Decorative Background Element */}
+              
               <div className="absolute -z-10 w-64 h-64 md:w-80 md:h-80 bg-indigo-200 rounded-full -top-3 -right-3" />
             </div>
           </div>
