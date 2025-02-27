@@ -1,10 +1,10 @@
 import React from 'react';
 import { Github, Linkedin, Mail } from 'lucide-react';
-import img from '../assests/2.jpg';
+import img from '../assests/2.png';
 
 const HeroSection = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center">
+    <div id="home" className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           {/* Text Content */}
@@ -63,7 +63,7 @@ const HeroSection = () => {
           
           <div className="flex-1 flex justify-center lg:justify-end">
             <div className="relative">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
+              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-indigo-600 shadow-xl">
                 <img 
                   src={img}
                   alt="Isuru Shehan Profile" 
