@@ -28,7 +28,7 @@ const ContactSection = () => {
     e.preventDefault();
     setLoading(true);
     
-    // Replace YOUR_PUBLIC_KEY with your actual EmailJS public key
+    
     emailjs
       .sendForm(
         'service_pfyt2mk', 
@@ -121,7 +121,7 @@ const ContactSection = () => {
                   <div>
                     <h4 className="text-lg font-medium text-gray-800">Location</h4>
                     <p className="text-gray-600">
-                      Colombo, Sri Lanka
+                      Algama,
                     </p>
                   </div>
                 </div>

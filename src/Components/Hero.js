@@ -1,6 +1,7 @@
 import React from 'react';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import img from '../assests/2.png';
+import Resume from 	'../assests/Resume.pdf';
 
 const HeroSection = () => {
   return (
@@ -31,10 +32,11 @@ const HeroSection = () => {
                 View Projects
               </a>
               <a 
-                href="#contact"
+                download='Resume'
+                href={Resume}
                 className="px-6 py-3 border-2 border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors duration-300"
               >
-                Contact Me
+                Download My CV
               </a>
             </div>
 
