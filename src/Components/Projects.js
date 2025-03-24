@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import Library from '../assests/library.PNG';
 import CURD from '../assests/Laravel_CURD.PNG';
-import Attend from '../assests/Attendence.PNG'
-
-
+import Attend from '../assests/Attendence.PNG';
 
 const Projects = () => {
   const projectsData = [
     {
       id: 1,
       title: "Library Management System",
-      description: "A full-stack Library solution with Member Enrollment, Book borrowing , and Some Oter Servises.",
+      description: "A full-stack library solution with member enrollment, book borrowing, and other services.",
       technologies: ["React", "Node.js", "Express", "MongoDB"],
       imageUrl: Library, 
       githubUrl: "https://github.com/isuru567/Library-Management-System",
@@ -18,38 +16,29 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "Simple CURD App",
-      description: "A  CURD application using Laravel and My sql.",
+      title: "Simple CRUD App",
+      description: "A CRUD application using Laravel and MySQL.",
       technologies: ["Laravel", "MySQL"],
-      imageUrl: CURD , 
+      imageUrl: CURD, 
       githubUrl: "https://github.com/isuru567/Laravel_App",
       category: "web"
     },
     {
       id: 3,
       title: "Attendance Management System",
-      description: "An analytics dashboard for  Attendence Management. we can use it for schools, classes , and offices.",
-      technologies: ["HTML", "CSS","javaScript", "Node.js", "Express", "MongoDB"],
+      description: "An analytics dashboard for attendance management, suitable for schools, classes, and offices.",
+      technologies: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "MongoDB"],
       imageUrl: Attend, 
       githubUrl: "https://github.com/isuru567/Attendance-Management-System",
       category: "data"
-    },
-    // {
-    //   id: 4,
-    //   title: "Personal Finance Tracker",
-    //   description: "A mobile-responsive application to track personal expenses, set budgets, and visualize spending patterns.",
-    //   technologies: ["React", "Firebase", "CSS"],
-    //   imageUrl: "/images/project-finance.jpg", 
-    //   githubUrl: "https://github.com/yourusername/project-repo",
-    //   category: "mobile"
-    // }
+    }
   ];
 
-  // Filter categories
+  // Categories for filtering
   const categories = ["all", "web", "mobile", "data"];
   const [activeFilter, setActiveFilter] = useState("all");
 
-  // Filter projects based on selected category
+  // Filtered projects
   const filteredProjects = activeFilter === "all" 
     ? projectsData 
     : projectsData.filter(project => project.category === activeFilter);
@@ -62,7 +51,24 @@ const Projects = () => {
         application design, and problem-solving.
       </p>
 
-      {/* Projects grid */}
+      {/* Filter Buttons */}
+      <div className="flex justify-center mb-8 gap-4">
+        {categories.map((category) => (
+          <button
+            key={category}
+            onClick={() => setActiveFilter(category)}
+            className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+              activeFilter === category 
+                ? "bg-indigo-600 text-white" 
+                : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+            }`}
+          >
+            {category.charAt(0).toUpperCase() + category.slice(1)}
+          </button>
+        ))}
+      </div>
+
+      {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredProjects.map((project) => (
           <div 
@@ -99,22 +105,12 @@ const Projects = () => {
               </div>
               
               <div className="flex gap-4">
-                {project.liveUrl && (
-                  <a 
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-300 text-sm"
-                  >
-                    Live Demo
-                  </a>
-                )}
                 {project.githubUrl && (
                   <a 
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-300 text-sm"
+                    className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 hover:scale-105 transition-all duration-300 text-sm"
                   >
                     GitHub
                   </a>
@@ -125,14 +121,14 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* Call to action */}
+      {/* Call to Action */}
       <div className="mt-16 text-center">
         <p className="text-gray-600 mb-4">Interested in seeing more of my work?</p>
         <a 
           href="https://github.com/isuru567" 
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-300"
+          className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 hover:scale-105 transition-all duration-300"
         >
           View More on GitHub
         </a>

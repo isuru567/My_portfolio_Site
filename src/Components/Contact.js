@@ -1,6 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import{motion} from  "motion/react";
+
+const box = {
+  width: 460,
+  height: 50,
+  borderRadius: 5,
+}
 
 const ContactSection = () => {
   const formRef = useRef();
@@ -202,9 +209,16 @@ const ContactSection = () => {
                 />
               </div>
 
-              <button
+              <motion.button
                 type="submit"
                 disabled={loading}
+                
+                 whileHover={{ scale: 1.1 }}
+                 whileTap={{ scale: 0.5 }}
+                 style={box}
+          
+                
+                
                 className={`w-full py-3 px-6 ${loading ? 'bg-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700'} text-white rounded-lg transition-colors duration-300 flex items-center justify-center space-x-2`}
               >
                 {loading ? (
@@ -215,7 +229,7 @@ const ContactSection = () => {
                     <span>Send Message</span>
                   </>
                 )}
-              </button>
+              </motion.button>
             </form>
           </div>
         </div>
