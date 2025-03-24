@@ -25,7 +25,7 @@ const HeroSection = () => {
              
           className="flex-1 text-center sm:text-left space-y-6">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
-              Hi, I'm <span className="text-indigo-600">Isuru Shehan</span> 
+              Hi, I'm <span className="text-indigo-600"> Shehan</span> 
             </h2>
             
             <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-700">
