@@ -58,36 +58,75 @@ const Skills = () => {
       {/* Soft Skills & Tools */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center justify-center sm:text-left">Soft Skills</h2>
-          <div className="space-y-3">
+          <motion.h2
+          
+              whileInView={{opasity: 1, x:0, }}
+              initial={{opasity:0, x:-100}}
+              transition={{duration: 1.5}}
+
+          className="text-2xl font-semibold text-gray-800 mb-4 text-center justify-center sm:text-left">Soft Skills</motion.h2>
+          <motion.div 
+          
+          whileInView={{opasity: 1, x:0, }}
+          initial={{opasity:0, x:100}}
+          transition={{duration: 1.5}}
+          
+          className="space-y-3">
             {softSkills.map((skill) => (
               <div key={skill} className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all border-l-4 border-green-500">
                 <p className="font-medium text-gray-800 text-center">{skill}</p>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         <div>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center sm:text-left">Tools & Platforms</h2>
-          <div className="space-y-3">
+          <motion.h2 
+          
+              whileInView={{opasity: 1, x:0, }}
+              initial={{opasity:0, x:-100}}
+              transition={{duration: 1.5}}
+          
+          className="text-2xl font-semibold text-gray-800 mb-4 text-center sm:text-left">Tools & Platforms</motion.h2>
+          <motion.div 
+          
+              whileInView={{opasity: 1, x:0, }}
+              initial={{opasity:0, x:100}}
+              transition={{duration: 1.5}}
+          
+          
+          className="space-y-3">
             {tools.map((tool) => (
               <div key={tool} className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all border-l-4 border-blue-500">
                 <p className="font-medium text-gray-800 text-center">{tool}</p>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Education & Certifications */}
       <div className="bg-gray-50 p-6 rounded-lg shadow-md">
-        <h2 className="text-xl font-semibold text-gray-800 mb-2 text-center sm:text-left">Education & Certifications</h2>
-        <ul className="list-disc pl-5 space-y-2 text-gray-600">
+        <motion.h2 
+        
+        whileInView={{opasity: 1, x:0, }}
+        initial={{opasity:0, x:-100}}
+        transition={{duration: 1.5}}
+        
+        
+        className="text-xl font-semibold text-gray-800 mb-2 text-center sm:text-left">Education & Certifications</motion.h2>
+        <motion.ul 
+        
+        whileInView={{opasity: 1, x:0, }}
+        initial={{opasity:0, x:100}}
+        transition={{duration: 1.5}}
+        
+        
+        className="list-disc pl-5 space-y-2 text-gray-600">
           {certifications.map((cert) => (
             <li key={cert}>{cert}</li>
           ))}
-        </ul>
+        </motion.ul>
       </div>
     </div>
   );

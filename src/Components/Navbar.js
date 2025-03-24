@@ -47,8 +47,8 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo or Brand Name */}
-          <div className="text-lg font-semibold text-indigo-600">
-            My Portfolio
+          <div className=" font-semibold text-indigo-600 text-3xl">
+            Isuru Shehan
           </div>
 
           {/* Desktop Navigation */}
