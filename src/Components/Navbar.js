@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react'; // Install lucide-react for icons: npm install lucide-react
+import { Menu, X } from 'lucide-react'; 
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('');
-  const [menuOpen, setMenuOpen] = useState(false); // State for mobile menu
+  const [menuOpen, setMenuOpen] = useState(false); 
 
   const navigation = [
     { name: 'Home', href: '#home' },
@@ -20,7 +20,7 @@ const Navbar = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    setMenuOpen(false); // Close menu on mobile after clicking
+    setMenuOpen(false); 
   };
 
   // Update active section based on scroll position

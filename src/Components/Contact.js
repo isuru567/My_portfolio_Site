@@ -1,13 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import emailjs from '@emailjs/browser';
-import{motion} from  "motion/react";
-
-const box = {
-  width: 460,
-  height: 50,
-  borderRadius: 5,
-}
+import { motion } from "framer-motion";
 
 const ContactSection = () => {
   const formRef = useRef();
@@ -35,7 +29,6 @@ const ContactSection = () => {
     e.preventDefault();
     setLoading(true);
     
-    
     emailjs
       .sendForm(
         'service_pfyt2mk', 
@@ -53,7 +46,6 @@ const ContactSection = () => {
             success: true,
             message: 'Your message has been sent successfully!'
           });
-          // Reset form
           setFormData({
             from_name: '',
             from_email: '',
@@ -78,7 +70,6 @@ const ContactSection = () => {
   return (
     <div id="contact" className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Contact Me 
@@ -90,7 +81,6 @@ const ContactSection = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
           <div className="space-y-8">
             <div className="bg-white p-6 rounded-xl shadow-lg">
               <h3 className="text-2xl font-semibold text-gray-800 mb-6">
@@ -108,7 +98,6 @@ const ContactSection = () => {
                     </a>
                   </div>
                 </div>
-
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Phone className="text-indigo-600" size={24} />
@@ -120,7 +109,6 @@ const ContactSection = () => {
                     </a>
                   </div>
                 </div>
-
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0">
                     <MapPin className="text-indigo-600" size={24} />
@@ -136,90 +124,19 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
           <div className="bg-white p-8 rounded-xl shadow-lg">
             {status.submitted && (
               <div className={`mb-6 p-4 rounded-lg ${status.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
                 {status.message}
               </div>
             )}
-            
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="from_name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  id="from_name"
-                  name="from_name"
-                  value={formData.from_name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
-                  placeholder="Your name"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="from_email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="from_email"
-                  name="from_email"
-                  value={formData.from_email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
-                  placeholder="Your_Email@example.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
-                  placeholder="Project Discussion"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={4}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors resize-none"
-                  placeholder="Your message here..."
-                />
-              </div>
-
               <motion.button
                 type="submit"
                 disabled={loading}
-                
-                 whileHover={{ scale: 1.1 }}
-                 whileTap={{ scale: 0.5 }}
-                 style={box}
-          
-                
-                
-                className={`w-full py-3 px-6 ${loading ? 'bg-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700'} text-white rounded-lg transition-colors duration-300 flex items-center justify-center space-x-2`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full md:w-auto px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors duration-300 flex items-center justify-center space-x-2"
               >
                 {loading ? (
                   <span>Sending...</span>
