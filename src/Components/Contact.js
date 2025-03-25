@@ -131,6 +131,10 @@ const ContactSection = () => {
               </div>
             )}
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+              <input type="text" name="from_name" value={formData.from_name} onChange={handleChange} placeholder="Your Name" className="w-full p-3 border border-gray-300 rounded-lg" required />
+              <input type="email" name="from_email" value={formData.from_email} onChange={handleChange} placeholder="Your Email" className="w-full p-3 border border-gray-300 rounded-lg" required />
+              <input type="text" name="subject" value={formData.subject} onChange={handleChange} placeholder="Subject" className="w-full p-3 border border-gray-300 rounded-lg" required />
+              <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Your Message" className="w-full p-3 border border-gray-300 rounded-lg h-32" required></textarea>
               <motion.button
                 type="submit"
                 disabled={loading}
