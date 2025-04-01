@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Library from '../assests/library.PNG';
 import CURD from '../assests/Laravel_CURD.PNG';
 import Attend from '../assests/Attendence.PNG';
+import Coffee from '../assests/coffee.PNG';
 
 const Projects = () => {
   const projectsData = [
@@ -30,6 +31,15 @@ const Projects = () => {
       technologies: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "MongoDB"],
       imageUrl: Attend, 
       githubUrl: "https://github.com/isuru567/Attendance-Management-System",
+      category: "data"
+    },
+
+    {id: 4,
+      title: "Coffee Hub Frontend Web Site",
+      description: "A Frontend web site for Coffee Hub",
+      technologies: ["HTML", "CSS", "JavaScript","Motion.Dev"],
+      imageUrl: Coffee , 
+      githubUrl: "https://github.com/isuru567/Coffee-App",
       category: "data"
     }
   ];
